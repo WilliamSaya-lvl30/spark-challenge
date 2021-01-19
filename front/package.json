@@ -1,0 +1,46 @@
+{
+  "name": "ml-challenge-front",
+  "version": "1.0.0",
+  "description": "challenge front end meli",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack -w",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilliamSaya-lvl30/ML-challenge.git"
+  },
+  "author": "williams saya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WilliamSaya-lvl30/ML-challenge.git"
+  },
+  "homepage": "https://github.com/WilliamSaya-lvl30/ML-challenge.git#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "css-loader": "^5.0.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-router-dom": "^4.3.1",
+    "style-loader": "^2.0.0",
+    "sass-loader": "^10.1.0",
+    "node-sass": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "url-loader": "^4.1.1",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  },
+  "plugins": [
+    "@babel/plugin-proposal-class-properties"
+  ]
+}
