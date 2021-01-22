@@ -2,21 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 
-router.get("/login=",(req,res,next)=>{
-    res.sendStatus(200)
-    // .then((fav)=>{
-    //    return res.send(fav)
-    // })
-    // .catch((e)=>next(e))
-})
+const userRoutes = require("./users");
+const loginRoutes = require("./login");
 
-router.get("/register",(req,res,next)=>{
-    res.sendStatus(200)
-    // .then((fav)=>{
-    //    return res.send(fav)
-    // })
-    // .catch((e)=>next(e))
-})
-
+router.use("/users", userRoutes);
+router.use("/", loginRoutes);
 
 module.exports=router
