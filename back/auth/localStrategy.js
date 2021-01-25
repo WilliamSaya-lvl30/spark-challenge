@@ -68,6 +68,7 @@ passport.use('local-signin', new LocalStrategy({
   passwordField: 'password',
   passReqToCallback: true
 }, async (req, email, password, done) => {
+  console.log('empieza la auth',email,password)
   const user = await Users.findOne({email: email});
   if(!user) {
     return done(null, false, { message: 'Incorrect username.' });

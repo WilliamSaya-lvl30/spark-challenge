@@ -6,18 +6,52 @@
 $grisClaro: #a59e8c;
 $grisOscuro: #66635b;
 $detalles: #75f4f4;
+$alpha: 0.4;
 
 #header {
   height: 10vh !important;
   background-color: $grisOscuro;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  button {
+    background-color: #ca031d;
+    border: 1px solid #f72843;
+  }
 }
 
 #content {
   height: 80vh !important;
   background-color: $grisClaro;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #footer {
   height: 10vh !important;
   background-color: $grisClaro;
+}
+
+.form-Container {
+  height: 75%;
+  width: 40%;
+  border-radius: 5%;
+  background-color: rgba($detalles, $alpha);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  max-height: 600px;
+  min-width: 530px;
+  h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+  }
+}
+
+.formulario-login {
+  width: 70%;
 }

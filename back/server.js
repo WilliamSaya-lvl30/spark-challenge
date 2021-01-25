@@ -7,8 +7,12 @@ const cookieParser=require('cookie-parser')
 const session=require('express-session')
 const passport=require('passport')
 require('./auth/localStrategy')
+const cors = require("cors");
+
 
 const app=express()
+app.use(cors());
+
 
 app.use(express.static(__dirname + "/public"));
 

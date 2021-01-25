@@ -23,10 +23,10 @@ router.post("/logout",(req,res,next)=>{
 })
 
 
-// router.get("/me",(req,res,next)=>{
-//     if(req.user) return res.send(req.user)
-//     console.log("no hay usuario")
-//     res.sendStatus(401)
-//   })
+router.get("/me",(req,res,next)=>{
+    if(req.user) return res.send(req.user)
+    console.log("no hay usuario")
+    res.sendStatus(401)
+  })
 
 module.exports=router
