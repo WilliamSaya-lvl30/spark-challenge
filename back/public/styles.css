@@ -4,12 +4,40 @@
 
 #header {
   height: 10vh !important;
-  background-color: #66635b; }
+  background-color: #66635b;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; }
+  #header button {
+    background-color: #ca031d;
+    border: 1px solid #f72843; }
 
 #content {
   height: 80vh !important;
-  background-color: #a59e8c; }
+  background-color: #a59e8c;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 #footer {
   height: 10vh !important;
   background-color: #a59e8c; }
+
+.form-Container {
+  height: 75%;
+  width: 40%;
+  border-radius: 5%;
+  background-color: rgba(117, 244, 244, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  max-height: 600px;
+  min-width: 530px; }
+  .form-Container h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem; }
+
+.formulario-login {
+  width: 70%; }
