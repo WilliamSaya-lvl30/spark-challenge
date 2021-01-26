@@ -5,7 +5,7 @@ import {Button,Modal,Form,Input,InputNumber} from 'antd'
 
 
 
-export default ({openModal,handleCancel,handleOk,loading,handleOpen,update, setUpdate,userForUpdate,handleChange})=>{
+export default ({openModal,handleCancel,handleOk,loading,handleOpen,update, setUpdate,userForUpdate,handleChange,form})=>{
     const layout = {
         labelCol: {
           span: 8,
@@ -48,6 +48,7 @@ export default ({openModal,handleCancel,handleOk,loading,handleOpen,update, setU
         >
 
         <Form {...layout} 
+        form={form}
         className='formulario-edicion'
         name="nest-messages" 
         validateMessages={validateMessages}>

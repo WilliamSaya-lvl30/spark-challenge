@@ -41,7 +41,6 @@ export default ({deleteUser })=>{
           title: 'DNI',
           dataIndex: 'dni',
           key:'dni',
-          defaultSortOrder: 'descend',
           sorter: (a, b) => a.dni - b.dni,
         },
         {
@@ -73,7 +72,6 @@ export default ({deleteUser })=>{
           title: 'Fecha de registro',
           dataIndex: 'fechaDeAlta',
           hey:'fechaDeAlta',
-          defaultSortOrder: 'descend',
           sorter: (a, b) => new Date(a.fechaDeAlta) - new Date(b.fechaDeAlta),
         },
         {

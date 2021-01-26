@@ -1,14 +1,18 @@
-import React,{ useEffect } from 'react';
+import React,{ useEffect,useState } from 'react';
 import axios from 'axios'
 import { useRecoilState } from "recoil";
 import Admin from '../components/Admin'
 import Auth403 from '../components/403'
 import {user,allUsers} from '../../atoms/index'
+import { SearchOutlined } from '@ant-design/icons';
 
 
 export default ()=>{
   const [User, setUser]= useRecoilState(user)
   const [Users, setUsers]= useRecoilState(allUsers)
+  const [searchText,setSearchText]=useState('')
+  const [searchedColumn,setSearchedColumn]=useState('')
+
 
   useEffect(async ()=>{
     //al montar el componente pide todos los usuarios de la base de datos
