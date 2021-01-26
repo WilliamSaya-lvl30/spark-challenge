@@ -5,9 +5,7 @@ import {Button,Modal,Form,Input,InputNumber} from 'antd'
 
 
 
-export default ({userID,openModal,handleCancel,handleOk,loading,handleOpen})=>{
-    const [User, setUser]= useRecoilState(user)
-
+export default ({openModal,handleCancel,handleOk,loading,handleOpen,update, setUpdate,userForUpdate,handleChange})=>{
     const layout = {
         labelCol: {
           span: 8,
@@ -40,28 +38,38 @@ export default ({userID,openModal,handleCancel,handleOk,loading,handleOpen})=>{
           onOk={handleOk}
           onCancel={handleCancel}
           footer={[
-            <Button key="back" onClick={handleCancel}>
-              Return
-            </Button>,
-            <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
-              Submit
-            </Button>,
+              <Button key="back" onClick={handleCancel}>
+                Return
+              </Button>,
+              <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
+                Update
+              </Button>
           ]}
         >
 
-        <Form {...layout} name="nest-messages" 
-        // onFinish={} 
+        <Form {...layout} 
+        className='formulario-edicion'
+        name="nest-messages" 
         validateMessages={validateMessages}>
             <Form.Item
                 name={['user', 'name']}
-                label="Name"
-                rules={[
-                {
-                    required: true,
-                },
-                ]}
+                label="Nombre"   
             >
-                <Input />
+                <Input 
+                onChange={handleChange} 
+                name='nombre' 
+                value={update.nombre} 
+                placeholder={userForUpdate.nombre}/>
+            </Form.Item>
+            <Form.Item
+                name={['user', 'apellido']}
+                label="Apellido"
+            >
+                <Input 
+                onChange={handleChange} 
+                name='apellido' 
+                value={update.apellido}
+                placeholder={userForUpdate.apellido}/>
             </Form.Item>
             <Form.Item
                 name={['user', 'email']}
@@ -72,29 +80,34 @@ export default ({userID,openModal,handleCancel,handleOk,loading,handleOpen})=>{
                 },
                 ]}
             >
-                <Input />
+                <Input 
+                 onChange={handleChange} 
+                 name='email' 
+                 value={update.email}
+                 placeholder={userForUpdate.email}
+                />
             </Form.Item>
             <Form.Item
-                name={['user', 'age']}
-                label="Age"
-                rules={[
-                {
-                    type: 'number',
-                },
-                ]}
+                name={['user', 'dni']}
+                label="DNI"
+              
             >
-                <InputNumber />
+                <Input
+                type='number'
+                placeholder={userForUpdate.dni}
+                name='dni'
+                onChange={handleChange}
+                value={update.dni}/>
             </Form.Item>
-            <Form.Item name={['user', 'website']} label="Website">
-                <Input />
-            </Form.Item>
-            <Form.Item name={['user', 'introduction']} label="Introduction">
-                <Input.TextArea />
-            </Form.Item>
-            <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                <Button type="primary" htmlType="submit">
-                Submit
-                </Button>
+            <Form.Item 
+            name={['user', 'domicilio']} 
+            label="Domicilio"
+            >
+                <Input 
+                 onChange={handleChange} 
+                 name='domicilio' 
+                 value={update.domicilio}
+                 placeholder={userForUpdate.domicilio}/>
             </Form.Item>
         </Form>
 

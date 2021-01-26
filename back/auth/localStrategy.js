@@ -48,14 +48,12 @@ passport.use('local-signup', new LocalStrategy({
   passReqToCallback: true
 }, async (req, email, password, done) => {
   const user = await Users.findOne({'email': email}).exec()
-  console.log(user)
   if(user) {
     return done(null, false, { message: 'The Email is already Taken.' });
   } else {
     const newUser = new Users();
     newUser.email = email;
     newUser.password = newUser.encryptPassword(password);
-  console.log(newUser)
     await newUser.save();
     done(null, newUser);
   }
@@ -68,7 +66,6 @@ passport.use('local-signin', new LocalStrategy({
   passwordField: 'password',
   passReqToCallback: true
 }, async (req, email, password, done) => {
-  console.log('empieza la auth',email,password)
   const user = await Users.findOne({email: email});
   if(!user) {
     return done(null, false, { message: 'Incorrect username.' });

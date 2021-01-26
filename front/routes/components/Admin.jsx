@@ -1,19 +1,18 @@
 import React from 'react'
 import { useRecoilState } from "recoil";
-import {allUsers} from '../../atoms/index'
+import {user,allUsers} from '../../atoms/index'
 import { Table,Button } from 'antd';
 import EdictContaines from '../containers/EdictContainer'
+import RegistrosContainer from '../containers/RegistrosContainer'
 
 
 
-export default ()=>{
+export default ({deleteUser })=>{
     const [Users, setUsers]= useRecoilState(allUsers)
+    const [User, setUser]= useRecoilState(user)
 
-    console.log("usuarios para la tabla")
 
-    function onChange(pagination, filters, sorter, extra) {
-        console.log('params', pagination, filters, sorter, extra);
-     }
+    
 
      const columns = [
         {
@@ -23,20 +22,20 @@ export default ()=>{
           render: (nombre, record) => <h4>{nombre + " " + record.apellido}</h4>,
           filters: [
             {
-              text: 'Joe',
-              value: 'Joe',
+              text: 'Xavi',
+              value: 'Xavi',
             },
             {
-              text: 'Jim',
-              value: 'Jim',
+              text: 'Leonel',
+              value: 'Leonel',
             }
           ],
           // specify the condition of filtering result
           // here is that finding the name started with `value`
       
-          // onFilter: (value, record) => record.name.indexOf(value) === 0,
-          // sorter: (a, b) => a.name.length - b.name.length,
-          // sortDirections: ['descend'],
+          onFilter: (value, record) => record.nombre.indexOf(value) === 0,
+          sorter: (a, b) => (a.nombre.length + a.apellido.length) - (b.nombre.length + b.apellido.length),
+          sortDirections: ['descend'],
         },
         {
           title: 'DNI',
@@ -61,8 +60,8 @@ export default ()=>{
               value: 'Barcelona',
             },
             {
-              text: 'Paris',
-              value: 'Paris',
+              text: 'Buenos Aires',
+              value: 'Buenos Aires',
             },
           ],
           filterMultiple: false,
@@ -75,7 +74,20 @@ export default ()=>{
           dataIndex: 'fechaDeAlta',
           hey:'fechaDeAlta',
           defaultSortOrder: 'descend',
-          sorter: (a, b) => a.fechaDeAlta - b.fechaDeAlta,
+          sorter: (a, b) => new Date(a.fechaDeAlta) - new Date(b.fechaDeAlta),
+        },
+        {
+          title: "",
+          dataIndex: "_id",
+          key: "id",
+          className: "community-button",
+          render: (userID) => {
+            return (
+              <RegistrosContainer
+              userID={userID}
+              />
+            );
+          },
         },
         {
             title: "",
@@ -95,13 +107,12 @@ export default ()=>{
             dataIndex: "_id",
             key: "id",
             className: "community-button",
-            render: (user) => {
+            render: (id) => {
               return (
-                <Button className="modal-button2" onClick={() =>{
-                    console.log("click borrar",user)
-                    // handleClick(user)
-                }
-                    }>
+                <Button 
+                disabled={id === User._id}
+                className="modal-button2" 
+                onClick={()=>deleteUser(id)}>
                   Borrar
                 </Button>
               );
@@ -117,7 +128,6 @@ export default ()=>{
         <Table 
         columns={columns} 
         dataSource={Users} 
-        onChange={onChange}
         pagination={{ pageSize: 5 }}
         />
         </>

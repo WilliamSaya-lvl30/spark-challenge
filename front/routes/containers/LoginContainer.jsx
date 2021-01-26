@@ -2,7 +2,6 @@ import React,{ useState } from 'react';
 import { useHistory } from "react-router-dom";
 import axios from 'axios'
 import { useRecoilState } from "recoil";
-import { Row, Col } from 'antd';
 import Login from '../components/Login'
 import {user} from '../../atoms/index'
 
@@ -16,7 +15,6 @@ export default ()=>{
 
 
   const handlendSubmid = async ()=>{
-    console.log("submitio")
     const auth ={
       email,
       password
@@ -24,12 +22,21 @@ export default ()=>{
     setLoading(true)
     setEmail("")
     setPassword("")
-    const user= await axios.post(`/api/login`,auth)
-    if(user){
-      setUser(user.data)
+
+    try {
+      const user= await axios.post(`/api/login`,auth)
+      console.log(user)
+      if(user){
+        setUser(user.data)
+        setLoading(false)
+        history.push('/admin')
+      }
+    } catch(err) {
+      console.log(err.message)
       setLoading(false)
-      history.push('/admin')
+      alert('Email o Password incorrectos, por favor intentelo de nuevo.'); // TypeError: failed to fetch
     }
+
   }
       
     return(

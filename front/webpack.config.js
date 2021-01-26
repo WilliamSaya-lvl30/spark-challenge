@@ -24,13 +24,7 @@ module.exports = {
           plugins: ["@babel/plugin-proposal-class-properties"]
         },
       
-      }
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   use: 'babel-loader',
-      //   exclude: /node_modules/
-      // }
-      ,
+      },
       {
         test: /\.css$/,
         use: [
@@ -58,28 +52,7 @@ module.exports = {
         ]
       }
     ]
-    // rules: [
-    //   {
-    //     test: /jsx?$/,
-    //     exclude: /(node_modules|bower_components)/,
-    //     loader: 'babel-loader',
-    //     query: {
-    //       presets: [
-    //         "@babel/preset-react",
-    //         "@babel/env"
-            
-    //       ],
-    //       plugins: ["@babel/plugin-proposal-class-properties"]
-    //     },
-      
-    //   },
-    //   {
-    //     test: /\.css$/,
-    //     loader: 'style-loader!css-loader'
-    //   },
-      
-      
-    // ]
+   
   },
   
  
