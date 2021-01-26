@@ -14,7 +14,6 @@ export default ({userID})=>{
   const [userForUpdate, setUserForUpdate]=useState({})
   const [update,setUpdate]=useState({
     nombre:'',
-    apellido:'',
     email:'',
     dni:'',
     domicilio:''
@@ -26,7 +25,6 @@ export default ({userID})=>{
     setOpenModal(false)
     setUpdate({
       nombre:'',
-      apellido:'',
       email:'',
       dni:'',
       domicilio:''
@@ -59,7 +57,6 @@ export default ({userID})=>{
     setLoading(false) 
     setUpdate({
       nombre:'',
-      apellido:'',
       email:'',
       dni:'',
       domicilio:''

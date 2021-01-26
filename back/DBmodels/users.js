@@ -6,9 +6,6 @@ const userSchema= new mongoose.Schema({
   nombre:{
     type:String,
   },
-  apellido:{
-    type:String,
-  },
   email:{
     type:String,
     require:true,

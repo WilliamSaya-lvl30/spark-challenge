@@ -63,16 +63,6 @@ export default ({openModal,handleCancel,handleOk,loading,handleOpen,update, setU
                 placeholder={userForUpdate.nombre}/>
             </Form.Item>
             <Form.Item
-                name={['user', 'apellido']}
-                label="Apellido"
-            >
-                <Input 
-                onChange={handleChange} 
-                name='apellido' 
-                value={update.apellido}
-                placeholder={userForUpdate.apellido}/>
-            </Form.Item>
-            <Form.Item
                 name={['user', 'email']}
                 label="Email"
                 rules={[

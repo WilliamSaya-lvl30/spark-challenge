@@ -3,57 +3,58 @@ const Users = require("../DBmodels/users")
 const bcrypt = require('bcrypt-nodejs');
 
 const Messi ={
-  nombre:'Leonel',
-  apellido:'Messi',
+  nombre:'Leonel Messi',
   domicilio:'Barcelona, Spain',
   email:'LeonelMessi@gmail.com',
   dni:19742891,
   password: "LuiSuarez",
-  fechaDeAlta: new Date(1990,11,17)
+  fechaDeAlta: new Date(1990,11,17),
+  registroSemanal:[1,2,3,4,3,0,2]
 }
 
 const Suarez={
-  nombre:'Luis',
-  apellido:'Suarez',
+  nombre:'Luis Suarez',
   domicilio:'Madrid, Spain',
   email:'LuiSuarez@gmail.com',
   dni:372983278,
   password: "LuiSuarez",
-  fechaDeAlta: new Date(1994,12,7)
+  fechaDeAlta: new Date(1994,12,7),
+  registroSemanal:[2,0,0,1,3,0,2]
 }
 
 const Neymar ={
-  nombre:'Neymar',
-  apellido:'Jr',
+  nombre:'Neymar Jr',
   domicilio:'Paris, Francia',
   email:'NeymarJr@gmail.com',
   dni:49328402,
   password: "NeymarJr",
-  fechaDeAlta: new Date(1995,1,17)
+  fechaDeAlta: new Date(1995,1,17),
+  registroSemanal:[1,1,1,2,3,0,2]
 }
 
 const Iniesta ={
-  nombre:'Andress',
-  apellido:'Iniesta',
+  nombre:'Andress Iniesta',
   domicilio:'China',
   email:'AndressIniesta@gmail.com',
   dni:76463222,
   password: "AndressIniesta",
-  fechaDeAlta: new Date(1985,1,27)
+  fechaDeAlta: new Date(1985,1,27),
+  registroSemanal:[1,2,3,4,3,0,2]
+
 }
 
 const Xavi ={
-  nombre:'Xavi',
-  apellido:'Hernandez',
+  nombre:'Xavi Hernandez',
   domicilio:'Quatar',
   email:'XaviHernandez@gmail.com',
   dni:3123533,
-  password: 'XaviHernandez'
+  password: 'XaviHernandez',
+  fechaDeAlta: new Date(1980,2,2),
+  registroSemanal:[1,2,3,4,3,0,2]
 }
 
 const Spark ={
-  nombre:'Spark',
-  apellido:'Solutions',
+  nombre:'Spark Solutions',
   domicilio:'Buenos Aires',
   email:'SparkSolutions@gmail.com',
   dni:952342342,
@@ -63,7 +64,7 @@ const Spark ={
 let userSeed=[Messi,Iniesta,Xavi,Neymar,Suarez,Spark]
 
 userSeed = userSeed.map(user=>{
-  if(user.nombre === 'Spark') {
+  if(user.nombre === 'Spark Solutions') {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(16))
   }
   return user

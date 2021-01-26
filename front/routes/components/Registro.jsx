@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactHighcharts from 'react-highcharts'
-import {Button,Modal,Form,Input,InputNumber} from 'antd'
+import {Button,Modal} from 'antd'
 
 
 
@@ -21,7 +21,7 @@ export default ({openModal,handleCancel,handleOpen,userSelect})=>{
             text: 'Registro de Login Semanal'
         },
         series: [{
-            name: `${userSelect.nombre} ${userSelect.apellido}`,
+            name: `${userSelect.nombre}`,
             data: userSelect.registroSemanal
         }],
         yAxis: {

@@ -7,35 +7,16 @@ import RegistrosContainer from '../containers/RegistrosContainer'
 
 
 
-export default ({deleteUser })=>{
+export default ({deleteUser,getColumnSearchProps })=>{
     const [Users, setUsers]= useRecoilState(allUsers)
     const [User, setUser]= useRecoilState(user)
-
-
-    
 
      const columns = [
         {
           title: 'Nombre',
           dataIndex: 'nombre',
           key:'nombre',
-          render: (nombre, record) => <h4>{nombre + " " + record.apellido}</h4>,
-          filters: [
-            {
-              text: 'Xavi',
-              value: 'Xavi',
-            },
-            {
-              text: 'Leonel',
-              value: 'Leonel',
-            }
-          ],
-          // specify the condition of filtering result
-          // here is that finding the name started with `value`
-      
-          onFilter: (value, record) => record.nombre.indexOf(value) === 0,
-          sorter: (a, b) => (a.nombre.length + a.apellido.length) - (b.nombre.length + b.apellido.length),
-          sortDirections: ['descend'],
+          ...getColumnSearchProps('nombre')
         },
         {
           title: 'DNI',
@@ -48,25 +29,13 @@ export default ({deleteUser })=>{
           dataIndex: 'email',
           key:'email',
           defaultSortOrder: 'descend',
+          ...getColumnSearchProps('email')
         },
         {
           title: 'Domicilio',
           dataIndex: 'domicilio',
           key:'domicilio',
-          filters: [
-            {
-              text: 'Barcelona',
-              value: 'Barcelona',
-            },
-            {
-              text: 'Buenos Aires',
-              value: 'Buenos Aires',
-            },
-          ],
-          filterMultiple: false,
-          onFilter: (value, record) => record.domicilio.indexOf(value) === 0,
-          sorter: (a, b) => a.domicilio.length - b.domicilio.length,
-          sortDirections: ['descend', 'ascend'],
+          ...getColumnSearchProps('domicilio')
         },
         {
           title: 'Fecha de registro',
@@ -117,9 +86,6 @@ export default ({deleteUser })=>{
             },
           },
       ];
-      
-
-
 
     return(
         <>
