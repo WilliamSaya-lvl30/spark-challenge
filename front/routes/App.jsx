@@ -16,6 +16,7 @@ export default function () {
   const [User, setUser]= useRecoilState(user)
 
   useEffect(async ()=>{
+    //se pide a la base de datos al usuario logueado actualmente de haber uno para mantener la seccion
     const User= await axios.get('/api/me')
     setUser(User)
   },[])
@@ -34,9 +35,8 @@ export default function () {
             <Redirect from="/" to="/login" />
           </Switch>
         </Content>
-        <Footer id='footer'>Footer</Footer>
+        <Footer id='footer'>Spark challenge realizado por Williams Saya</Footer>
       </Layout>
-    
     </div>  
   );
 }

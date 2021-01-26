@@ -41,3 +41,10 @@
 
 .formulario-login {
   width: 70%; }
+
+.formulario-edicion {
+  width: 95%; }
+
+.ant-modal-footer {
+  display: flex;
+  justify-content: space-evenly; }

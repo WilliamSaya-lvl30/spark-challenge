@@ -2,35 +2,79 @@ import React,{ useState } from 'react';
 import axios from 'axios'
 import { useRecoilState } from "recoil";
 import Edict from '../components/Edict'
-import {user,allUsers} from '../../atoms/index'
-import Auth403 from '../components/403'
+import {allUsers} from '../../atoms/index'
 
 
 export default ({userID})=>{
-  const [User, setUser]= useRecoilState(user)
   const [Users, setUsers]= useRecoilState(allUsers)
   const [openModal,setOpenModal]=useState(false)
   const [loading,setLoading]=useState(false)
-
-  //   useEffect(async ()=>{
-//     const Users= await axios.get('/api/users')
-//     setUsers(Users.data)
-//   },[])
+  const [userForUpdate, setUserForUpdate]=useState({})
+  const [update,setUpdate]=useState({
+    nombre:'',
+    apellido:'',
+    email:'',
+    dni:'',
+    domicilio:''
+  })
 
   const handleCancel = ()=>{
     setOpenModal(false)
+    setUpdate({
+      nombre:'',
+      apellido:'',
+      email:'',
+      dni:'',
+      domicilio:''
+    })
+    setUserForUpdate({})
   }
 
-  const handleOk = ()=>{
-    setLoading(true)
+  const handleOk = async ()=>{
+    setLoading(true) 
+    setOpenModal(false)
+
+    //toma los valores que el usuario quiere actualizar
+    const userPut= {}
+    for (const key in update){
+      update[key] ? userPut[key]=update[key] : ''
+    }
+    //actualiza y recibe de nuevo al usuario modificado
+    const user= await axios.put(`/api/users/${userForUpdate._id}`,userPut)
+    user.data.fechaDeAlta =  user.data.fechaDeAlta.split("T")[0]
+
+    //igresa al usuario actualizado en los Users y los setea en el estado
+    const usersUpdate=[...Users]
+    usersUpdate.map((usuario,i)=>{
+      if(usuario._id == user.data._id){
+        usersUpdate[i]=user.data
+      }
+    })
+    setUsers(usersUpdate)
+    setLoading(false) 
+    setUpdate({
+      nombre:'',
+      apellido:'',
+      email:'',
+      dni:'',
+      domicilio:''
+    })
+    setUserForUpdate({})
+  }
+
+  const handleChange = (e)=>{
+    setUpdate({
+      ...update,
+      [e.target.name]: e.target.value,
+    });
     
   }
 
   const handleOpen = ()=>{
+    //setea el usuario que se quiere actualizar y abre el modal
     const Usuario=Users.filter(usuario=> usuario._id === userID)[0]
-    console.log(userID,Usuario)
+    setUserForUpdate(Usuario)
     setOpenModal(true)
-
   }
 
     return(
@@ -43,6 +87,10 @@ export default ({userID})=>{
         handleCancel={handleCancel}
         loading={loading}
         handleOpen={handleOpen}
+        update={update}
+        setUpdate={setUpdate}
+        handleChange={handleChange}
+        userForUpdate={userForUpdate}
         />
     )
 }
