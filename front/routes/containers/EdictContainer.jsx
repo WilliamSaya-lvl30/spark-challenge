@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useRecoilState } from "recoil";
 import Edict from '../components/Edict'
 import {allUsers} from '../../atoms/index'
+import { Form } from "antd";
+
 
 
 export default ({userID})=>{
@@ -12,22 +14,23 @@ export default ({userID})=>{
   const [userForUpdate, setUserForUpdate]=useState({})
   const [update,setUpdate]=useState({
     nombre:'',
-    apellido:'',
     email:'',
     dni:'',
     domicilio:''
   })
+  const [form] = Form.useForm();
+
 
   const handleCancel = ()=>{
     setOpenModal(false)
     setUpdate({
       nombre:'',
-      apellido:'',
       email:'',
       dni:'',
       domicilio:''
     })
     setUserForUpdate({})
+    form.resetFields();
   }
 
   const handleOk = async ()=>{
@@ -54,12 +57,12 @@ export default ({userID})=>{
     setLoading(false) 
     setUpdate({
       nombre:'',
-      apellido:'',
       email:'',
       dni:'',
       domicilio:''
     })
     setUserForUpdate({})
+    form.resetFields();
   }
 
   const handleChange = (e)=>{
@@ -91,6 +94,7 @@ export default ({userID})=>{
         setUpdate={setUpdate}
         handleChange={handleChange}
         userForUpdate={userForUpdate}
+        form={form}
         />
     )
 }

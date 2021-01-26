@@ -2,8 +2,7 @@ import React from 'react'
 import { Form, Input, Button, Checkbox } from 'antd';
 
 
-export default ({email,password,setEmail,setPassword,handlendSubmid,loading})=>{
-  
+export default ({handledEmail,handledPassword,handlendSubmid,loading,form})=>{
   
       const tailLayout = {
           wrapperCol: {
@@ -16,18 +15,19 @@ export default ({email,password,setEmail,setPassword,handlendSubmid,loading})=>{
         <div className='form-Container'>
             <h1>LOGIN</h1>
           <Form
-          className='formulario-login'
+            form={form}
+            className='formulario-login'
             name="basic"
-          //   initialValues={{
-          //     remember: true,
-          //   }}
+            initialValues={{
+              remember: false,
+            }}
             onFinish={handlendSubmid}
-          //   onFinishFailed={onFinishFailed}
             >
         <Form.Item
           name="email"
           rules={[
             {
+              type: 'email',
               required: true,
               message: 'Please input your email!',
             },
@@ -35,8 +35,8 @@ export default ({email,password,setEmail,setPassword,handlendSubmid,loading})=>{
         >
             <Input 
                 placeholder="Email"
-                onChange={(e)=>setEmail(e.target.value)} 
-                value={email}/>
+                onChange={handledEmail} 
+                />
         </Form.Item>
   
         <Form.Item
@@ -50,9 +50,8 @@ export default ({email,password,setEmail,setPassword,handlendSubmid,loading})=>{
         >
             <Input.Password 
                 placeholder="Password" 
-                onChange={(e)=>{
-                    setPassword(e.target.value)}} 
-                value={password}/>
+                onChange={handledPassword} 
+                />
         </Form.Item>
   
         <Form.Item {...tailLayout} name="remember" valuePropName="checked">

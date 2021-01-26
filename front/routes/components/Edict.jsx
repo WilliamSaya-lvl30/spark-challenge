@@ -5,7 +5,7 @@ import {Button,Modal,Form,Input,InputNumber} from 'antd'
 
 
 
-export default ({openModal,handleCancel,handleOk,loading,handleOpen,update, setUpdate,userForUpdate,handleChange})=>{
+export default ({openModal,handleCancel,handleOk,loading,handleOpen,update, setUpdate,userForUpdate,handleChange,form})=>{
     const layout = {
         labelCol: {
           span: 8,
@@ -48,6 +48,7 @@ export default ({openModal,handleCancel,handleOk,loading,handleOpen,update, setU
         >
 
         <Form {...layout} 
+        form={form}
         className='formulario-edicion'
         name="nest-messages" 
         validateMessages={validateMessages}>
@@ -60,16 +61,6 @@ export default ({openModal,handleCancel,handleOk,loading,handleOpen,update, setU
                 name='nombre' 
                 value={update.nombre} 
                 placeholder={userForUpdate.nombre}/>
-            </Form.Item>
-            <Form.Item
-                name={['user', 'apellido']}
-                label="Apellido"
-            >
-                <Input 
-                onChange={handleChange} 
-                name='apellido' 
-                value={update.apellido}
-                placeholder={userForUpdate.apellido}/>
             </Form.Item>
             <Form.Item
                 name={['user', 'email']}

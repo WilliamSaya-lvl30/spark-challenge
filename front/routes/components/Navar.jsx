@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row,Button } from 'antd';
+import { Row,Col,Button } from 'antd';
 import { useRecoilState } from "recoil";
 import {user} from '../../atoms/index'
 
@@ -10,10 +10,17 @@ const [User, setUser]= useRecoilState(user)
 
     return(
         <Row>
-            {User && 
-            <Button onClick={handlogout}>
+            <Col span={4}></Col>
+            <Col span={16} >
+                <h1>SPARK CHALLENGE</h1>
+            </Col>
+            <Col span={4} className='logout'>
+                {User && 
+                <Button onClick={handlogout} >
                 Logout
-            </Button>}
+                </Button>}
+            </Col>
+            
         </Row>
     )
 }

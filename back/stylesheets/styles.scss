@@ -3,18 +3,25 @@
   padding: 0;
 }
 
-$grisClaro: #a59e8c;
+$grisClaro: #e4dfda;
 $grisOscuro: #66635b;
-$detalles: #75f4f4;
+$detalles: #3581b8;
 $alpha: 0.4;
 
 #header {
   height: 10vh !important;
   background-color: $grisOscuro;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
+  div {
+    height: 100%;
+    .ant-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .logout {
+        justify-content: flex-end;
+      }
+    }
+  }
   button {
     background-color: #ca031d;
     border: 1px solid #f72843;
@@ -32,6 +39,8 @@ $alpha: 0.4;
 #footer {
   height: 10vh !important;
   background-color: $grisClaro;
+  display: flex;
+  justify-content: center;
 }
 
 .form-Container {

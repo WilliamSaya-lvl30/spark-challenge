@@ -4,30 +4,37 @@
 
 #header {
   height: 10vh !important;
-  background-color: #66635b;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center; }
+  background-color: #66635b; }
+  #header div {
+    height: 100%; }
+    #header div .ant-col {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      #header div .ant-col .logout {
+        justify-content: flex-end; }
   #header button {
     background-color: #ca031d;
     border: 1px solid #f72843; }
 
 #content {
   height: 80vh !important;
-  background-color: #a59e8c;
+  background-color: #e4dfda;
   display: flex;
   align-items: center;
   justify-content: center; }
 
 #footer {
   height: 10vh !important;
-  background-color: #a59e8c; }
+  background-color: #e4dfda;
+  display: flex;
+  justify-content: center; }
 
 .form-Container {
   height: 75%;
   width: 40%;
   border-radius: 5%;
-  background-color: rgba(117, 244, 244, 0.4);
+  background-color: rgba(53, 129, 184, 0.4);
   display: flex;
   align-items: center;
   justify-content: space-evenly;

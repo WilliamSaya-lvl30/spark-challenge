@@ -14,6 +14,7 @@ export default ()=>{
   const handlogout = async ()=>{
     const respuesta= await axios.post(`/api/logout`,User)
     console.log("logout successfull",respuesta)
+    setUser('')
     history.push("/login")
   }
       
